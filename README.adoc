@@ -8,7 +8,7 @@ This is a Python project to help me showing the problems I am having in other la
 
 I am trying to increase the test coverage of RIDE, and I have created one unit test, to verify the exception execution block, of the main RIDE module, when the import of https://wxpython.org[wxPython] fails. This is a critical library that RIDE needs to function, so some help is shown to the user when it fails to import.
 
-I have create the test, using MonkeyPatch() from pytest, to replace the original ``builtins.__import__`` method and causing the expected exception to a known import in the module under test. It worked fine, the unit test ran the test and returned the expected result, and the code after the exception catch did not run.
+I have create the test, using `MonkeyPatch()` from `pytest`, to replace the original `builtins.```__```import```__`` method and causing the expected exception to a known import in the module under test. It worked fine, the unit test ran the test and returned the expected result, and the code after the exception catch did not run.
 
 The problem was when running all unit tests of RIDE to obtain the coverage report, always failed at this test, because wxPython was imported, the exception not triggered and remaining code ran.
 
@@ -25,7 +25,7 @@ OK, I have done a lot of searches in WWW, and learned about the Python Cache (wh
 
 At first I have suspected of ``coverage`` being responsible for always find ``wx`` when running the test, but later I concluded that ``pytest`` was the one always finding ``wx``.
 
-I RIDE project I always have failure when running ``pytest`` with more than the set of tests for the main module. Specifically, if I run ``pytest utest/application/test_app_main.py`` alone, the 13 tests pass. If I run with other tests, and no matter what order I use, like in, ``pytest utest/application/test_app_main.py utest/application/test_robot_patches.py`` the relevant anf first test fails, and 16 pass.
+I RIDE project I always have failure when running ``pytest`` with more than the set of tests for the main module. Specifically, if I run ``pytest utest/application/test_app_main.py`` alone, the 13 tests passes. If I run with other tests, and no matter what order I use, like in, ``pytest utest/application/test_app_main.py utest/application/test_robot_patches.py`` the relevant and first test fails, and 16 passes.
 
 == This Demo Project ==
 
@@ -33,7 +33,7 @@ I have been testing this demo project and RIDE, in Fedora 38, Python 3.11, wxPyt
  
 To be able to test this project, you can install the requirements with:
 
-``pip install -r requirements.txt``
+  ``pip install -r requirements.txt``
 
 The file tree is:
 
@@ -68,14 +68,15 @@ The file tree is:
 
 The script ``cover.sh`` is just my helper script to run coverage:
 
+```
   #!/usr/bin/bash
-
+  
   PYTHONROOT=/usr/bin PYTHONPATH./src:./utests coverage run -m pytest -k test_ -v .
-
+  
   coverage report
   coverage xml
   coverage html
-
+```
 == Running the tests
 
 You can run the tests with ``pytest`` and in this small project they only fail when the ``l1`` is run before ``m1``.
@@ -116,9 +117,11 @@ Output of ``cover.sh``:
   Wrote HTML report to ./.coverage-reports/htmlcov/index.html
 
 In browser:
+
 image::./doc/coverage_report.png[]
 
 Detail of uncovered code:
+
 image::./doc/detail_of_uncovered.png[]
 
 ---
@@ -140,5 +143,6 @@ After removing the ``l1`` module, tests and references, I get 100% coverage:
   Wrote HTML report to ./.coverage-reports/htmlcov/index.html
  
 Detail of covered code:
+
 image::./doc/detail_of_fully_covered.png[]
 
