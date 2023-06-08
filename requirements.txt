@@ -1,0 +1,4 @@
+wxPython
+coverage
+pytest
+pytest-cov
