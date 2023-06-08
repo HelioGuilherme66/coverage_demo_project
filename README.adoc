@@ -153,3 +153,10 @@ If you have a solution to improve the unit test in ``m1``, without changing the 
 I don't want a solution that would need for me to reorder the tests, by renaming them, or forcing order execution.
 
 (Now that I think about forcing order execution, I think ``pytest`` has something for it image:https://www.clipartkey.com/mpngs/m/299-2997890_rubber-duck-emoji-png.png[rubber_duck,80,64] )
+
+== Rubber Duck Effect
+
+After considering changing the order of the tests, by using `pytest` plugin `pytest-order` and the option `--order-group-scope=module`, the critical unit test is always the first to run, and I have 100% success and coverage in this project.
+
+Unfortunatelly, the same solution did not solve the problem in the original project, RIDE. Again, tried to delete modules cache, but no luck. I just can't identify why in RIDE project ``wx`` is always found.
+

@@ -2,3 +2,4 @@ wxPython
 coverage
 pytest
 pytest-cov
+pytest-order

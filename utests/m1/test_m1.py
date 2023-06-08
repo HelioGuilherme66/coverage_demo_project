@@ -19,6 +19,7 @@ class TestModule(unittest.TestCase):
     def tearDown(self):
         builtins.__import__ = real_import
 
+    @pytest.mark.order(1)
     def test_missing_wx(self):
         with MonkeyPatch().context() as m:
             with pytest.raises((ModuleNotFoundError, SystemExit)):
