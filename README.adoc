@@ -8,7 +8,7 @@ This is a Python project to help me showing the problems I am having in other la
 
 I am trying to increase the test coverage of RIDE, and I have created one unit test, to verify the exception execution block, of the main RIDE module, when the import of https://wxpython.org[wxPython] fails. This is a critical library that RIDE needs to function, so some help is shown to the user when it fails to import.
 
-I have create the test, using `MonkeyPatch()` from `pytest`, to replace the original `builtins.```__```import```__`` method and causing the expected exception to a known import in the module under test. It worked fine, the unit test ran the test and returned the expected result, and the code after the exception catch did not run.
+I have create the test, using `MonkeyPatch()` from `pytest`, to replace the original ``builtins.\_\_import__`` method and causing the expected exception to a known import in the module under test. It worked fine, the unit test ran the test and returned the expected result, and the code after the exception catch did not run.
 
 The problem was when running all unit tests of RIDE to obtain the coverage report, always failed at this test, because wxPython was imported, the exception not triggered and remaining code ran.
 
@@ -33,7 +33,7 @@ I have been testing this demo project and RIDE, in Fedora 38, Python 3.11, wxPyt
  
 To be able to test this project, you can install the requirements with:
 
-  ``pip install -r requirements.txt``
+  pip install -r requirements.txt
 
 The file tree is:
 
@@ -146,3 +146,10 @@ Detail of covered code:
 
 image::./doc/detail_of_fully_covered.png[]
 
+== Will You Help Me?
+
+If you have a solution to improve the unit test in ``m1``, without changing the code of the "app", please, please, tell me :).
+
+I don't want a solution that would need for me to reorder the tests, by renaming them, or forcing order execution.
+
+(Now that I think about forcing order execution, I think ``pytest`` has something for it image:https://www.clipartkey.com/mpngs/m/299-2997890_rubber-duck-emoji-png.png[rubber_duck,80,64] )
